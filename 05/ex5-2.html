@@ -10,6 +10,10 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+        $().ready(function () {
+            doSelect();
+        });
+
         function button1Pressed() {
             doInsert();
             doSelect();
@@ -22,6 +26,7 @@
             var sql = `insert into Tweets (name, tweet, time) values("${userid}", "${tweet.value}", now());`;
             var objects = await osql.connect(sql);
             console.log(objects);
+            console.log(tweet.value)
             tweet.value = '';
         }
 
