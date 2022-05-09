@@ -10,8 +10,11 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+
+        var x;
         $().ready(function () {
-            doSelect();
+            x = 0;
+            setInterval(doSelect, 2000);
         });
 
         function button1Pressed() {
@@ -31,7 +34,7 @@
         }
 
         async function doSelect() {
-
+            x++;
             var sql = 'select * from Tweets';
             var objects = await osql.connect(sql);
             console.log(objects);
