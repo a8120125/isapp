@@ -12,6 +12,7 @@
     <script>
         function button1Pressed() {
             doInsert();
+            doSelect();
         }
 
         async function doInsert() {
@@ -22,8 +23,21 @@
             var objects = await osql.connect(sql);
             console.log(objects);
             tweet.value = '';
+        }
 
-            document.getElementById('result').innerHTML = "tweetしました";
+        async function doSelect() {
+
+            var sql = 'select * from Tweets';
+            var objects = await osql.connect(sql);
+            console.log(objects);
+            var html = '';
+            html = html + '<table border="1">';
+            for (var i = 0; i < objects.length; i++) {
+                var object = objects[i];
+                html = html + `<tr><td>${object.id}</td><td>${object.name}</td><td>${object.tweet}</td><td>${object.time}</td></tr>`;
+            }
+            html = html + '</table>';
+            document.getElementById('result').innerHTML = html;
         }
     </script>
 
