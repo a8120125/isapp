@@ -9,16 +9,21 @@
     <script type="text/javascript" src="../settings.js"></script>
     <script type="text/javascript" src="../osql.js"></script>
 
-    <script>
-    </script>
 
 </head>
 
 <body>
     <h1>ユーザトップ</h1>
-    <p id="welcome">ようこそxxさん</p>
+    <p id="welcome" value=""></p>
     <hr>
 
 </body>
+
+<script>
+    let item = sessionStorage.getItem('username');
+    console.log(item)
+    document.getElementById('welcome').innerHTML = `ようこそ${item}さん`;
+
+</script>
 
 </html>
