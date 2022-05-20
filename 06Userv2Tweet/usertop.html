@@ -16,7 +16,8 @@
     <h1>ユーザトップ</h1>
     <p id="welcome" value=""></p>
     <hr>
-    <p><a href="" target="_blanck" id="change">ユーザ情報の変更はこちら</a></p>
+    <p><a href="" id="change">ユーザ情報の変更はこちら</a></p>
+    <p><a href="" id="tweet">Tweetする</a></p>
 
 </body>
 
@@ -26,8 +27,10 @@
     console.log(item)
     document.getElementById('welcome').innerHTML = `ようこそ${item}さん`;
 
-    var target = document.getElementById("change");
-    target.href = `update.html?userid=${id}`;
+    var target1 = document.getElementById("change");
+    target1.href = `update.html?userid=${id}`;
+    var target2 = document.getElementById("tweet");
+    target2.href = `Tweet.html?userid=${id}`;
 
 </script>
 
