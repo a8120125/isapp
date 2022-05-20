@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="../jquery.min.js"></script>
+    <script type="text/javascript" src="../settings.js"></script>
+    <script type="text/javascript" src="../osql.js"></script>
+
+
+</head>
+
+<body>
+    <h1>ユーザトップ</h1>
+    <p id="welcome" value=""></p>
+    <hr>
+    <p><a href="" target="_blanck" id="change">ユーザ情報の変更はこちら</a></p>
+
+</body>
+
+<script>
+    let item = sessionStorage.getItem('username');
+    let id = sessionStorage.getItem('userid');
+    console.log(item)
+    document.getElementById('welcome').innerHTML = `ようこそ${item}さん`;
+
+    var target = document.getElementById("change");
+    target.href = `update.html?userid=${id}`;
+
+</script>
+
+</html>
