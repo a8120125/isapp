@@ -15,7 +15,24 @@
         $().ready(function () {
             x = 0;
             setInterval(doSelect, 2000);
+            execSelect()
+
+
+
         });
+
+        async function execSelect() {
+            var userid = osql.getParam('userid');
+            var sql = `select * from Users where id="${userid}";`;
+            var objects = await osql.connect(sql);
+            if (objects.length <= 0) {
+                document.getElementById('result').innerHTML = 'not found';
+                return;
+            }
+            var user = objects[0];
+            document.getElementById('tf1').value = user.id;
+        }
+
 
         function button1Pressed() {
             doInsert();
@@ -47,6 +64,8 @@
             html = html + '</table>';
             document.getElementById('result').innerHTML = html;
         }
+
+
     </script>
 
 </head>
@@ -54,7 +73,7 @@
 <body>
     <h1>Tweets</h1>
     <br>
-    名前:<input id="tf1" value="名無し" type="textfield">
+    名前:<input id="tf1" value="" type="textfield">
     <br>
     tweet:<input id="tf2" type="textfield">
     <button onclick="button1Pressed()">tweet</button>
